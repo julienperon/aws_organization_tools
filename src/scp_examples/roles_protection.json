@@ -1,0 +1,25 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "ProtectAdminRoles",
+            "Action": "iam:*",
+            "Resource": [
+                "arn:aws:iam::*:role/AWSCloudFormationStackSetExecutionRole",
+                "arn:aws:iam::*:role/role-path-whatever/another-path/*",
+                "arn:aws:iam::*:role/role-admin*",
+                "arn:aws:iam::*:policy/policy-whatever-*"
+            ],
+            "Effect": "Deny",
+            "Condition": {
+                "ArnNotLike": {
+                    "aws:PrincipalArn": [
+                        "arn:aws:iam::*:role/role-admin*",
+                        "arn:aws:iam::*:role/role-path-whatever/another-path/*",
+                        "arn:aws:iam::*:role/AWSCloudFormationStackSetExecutionRole"
+                    ]
+                }
+            }
+        }
+    ]
+}

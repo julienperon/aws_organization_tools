@@ -1,0 +1,25 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "kms:DeleteImported*",
+                "kms:ImportKeyMaterial",
+                "kms:ScheduleKeyDeletion",
+                "kms:CancelKeyDeletion"
+            ],
+            "Resource": [
+                "*"
+            ],
+            "Effect": "Deny",
+            "Condition": {
+                "ArnNotLike": {
+                    "aws:PrincipalArn": [
+                        "arn:aws:iam::*:role/role-admin*",
+                        "arn:aws:iam::*:role/AWSCloudFormationStackSetExecutionRole"
+                    ]
+                }
+            }
+        }
+    ]
+}

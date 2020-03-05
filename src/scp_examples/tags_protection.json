@@ -1,0 +1,29 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "PreventNonAdminToUseMyTag",
+      "Condition": {
+        "ForAnyValue:StringLike": {
+          "aws:TagKeys": [
+            "my-tag-value:*"
+          ]
+        },
+        "ArnNotLike": {
+          "aws:PrincipalArn": [
+            "arn:aws:iam::*:role/role-admin*",
+            "arn:aws:iam::*:role/AWSCloudFormationStackSetExecutionRole"
+          ]
+        }
+      },
+      "Action": [
+        "ec2:CreateTags",
+        "ec2:DeleteTags"
+      ],
+      "Resource": [
+        "*"
+      ],
+      "Effect": "Deny"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "Allow_services",
+            "Action": [
+                "config:*",
+                "ec2:*",
+                "ec2messages:*",
+                "events:*",
+                "health:Describe*",
+                "iam:*",
+                "kinesis:*",
+                "kms:*",
+                "lambda:*",
+                "logs:*",
+                "pricing:*",
+                "resource-groups:*",
+                "s3:*",
+                "sts:*",
+                "support:*",
+                "tag:*",
+                "trustedadvisor:*"
+            ],
+            "Effect": "Allow",
+            "Resource": "*"
+        }
+    ]
+}

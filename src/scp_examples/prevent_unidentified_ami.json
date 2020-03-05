@@ -1,0 +1,16 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "LaunchingEC2withAMIsAndTags",
+            "Effect": "Deny",
+            "Action": "ec2:RunInstances",
+            "Resource": "arn:aws:ec2:eu-west-1::image/ami-*",
+            "Condition": {
+                "StringNotEquals": {
+                    "ec2:ResourceTag/Environment": "Prod"
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Deny",
+            "Action": [
+                "cloudformation:*"
+            ],
+            "Resource": [
+                "arn:aws:cloudformation:eu-west-1:*:stack/*naming-pattern-you-want-to-protect*"
+            ],
+            "Condition": {
+                "ForAnyValue:StringNotLike": {
+                    "aws:PrincipalArn": [
+                        "arn:aws:iam::*:role/role-admin*",
+                        "arn:aws:iam::*:role/AWSCloudFormationStackSetExecutionRole"
+                    ]
+                }
+            }
+        }
+      ]
+}
